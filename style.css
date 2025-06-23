@@ -1,113 +1,47 @@
 
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #fdfdfd;
-  margin: 20px;
+  font-family: Arial, sans-serif;
+  background: #fdfdfd;
+  margin: 0;
   padding: 0;
+}
+h2, h3 {
   color: #333;
 }
-
-h1 {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.categories,
-.panels {
-  max-width: 900px;
-  margin: 0 auto 40px auto;
-}
-
-select {
-  font-size: 1em;
-  padding: 6px;
-  margin-bottom: 15px;
-}
-
-.question-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
-}
-
-.question-item {
-  border: 2px dashed #aaa;
-  padding: 20px;
-  width: 300px;
-  background: white;
-  cursor: grab;
-  border-radius: 10px;
-  text-align: center;
-  font-size: 0.95em;
-}
-
 .panel-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 10px;
   justify-content: center;
 }
-
-.panel {
-  width: 250px;
-  height: 150px;
-  background-color: white;
-  border-radius: 10px;
-  border: 3px solid #bbb;
-  text-align: center;
-  line-height: 1.5;
-  padding: 20px;
-  cursor: pointer;
-  font-size: 0.95em;
-  transition: all 0.2s ease-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.panel.clickable:hover {
-  background-color: #f2f2f2;
-}
-
-/* Color themes per category */
-.categories[data-theme='individual'] .question-item,
-.panel[data-theme='individual'] {
-  border-color: #b06cb3;
-}
-
-.categories[data-theme='culture'] .question-item,
-.panel[data-theme='culture'] {
-  border-color: #f5b100;
-}
-
-.categories[data-theme='food'] .question-item,
-.panel[data-theme='food'] {
-  border-color: #74c365;
-}
-
-.categories[data-theme='society'] .question-item,
-.panel[data-theme='society'] {
-  border-color: #e74c3c;
-}
-
-.categories[data-theme='academic'] .question-item,
-.panel[data-theme='academic'] {
-  border-color: #00bcd4;
-}
-
-button {
-  display: block;
-  margin: 30px auto 0 auto;
-  padding: 10px 20px;
-  font-size: 1em;
-  background-color: #333;
-  color: white;
-  border: none;
+.category-frame {
+  padding: 6px;
+  margin: 5px;
   border-radius: 6px;
+  font-weight: bold;
+}
+.individual-frame { border: 2px solid purple; }
+.culture-frame { border: 2px solid goldenrod; }
+.food-frame { border: 2px solid green; }
+.society-frame { border: 2px solid red; }
+.academic-frame { border: 2px solid blue; }
+.neutral-frame { border: 2px solid gray; }
+button {
+  margin: 4px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: #1976d2;
+  color: white;
   cursor: pointer;
 }
-
 button:hover {
-  background-color: #555;
+  background-color: #1565c0;
+}
+textarea, select {
+  width: 100%;
+  padding: 6px;
+  margin: 6px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }

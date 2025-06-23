@@ -9,30 +9,58 @@
 <body>
   <header style="text-align:center; margin-bottom: 30px;">
     <img src="EDIcebreaker logo.jpg" alt="EDIcebreaker Logo" style="max-width: 300px; height: auto;">
-    <h1>EDIcebreaker</h1>
-    <p>Travel with EDI | Voyager avec l’EDI</p>
   </header>
 
-  <div class="categories">
-    <h2>Question Bank</h2>
+  <div class="panels">
+    <h2>New Session</h2>
+    <div id="question-panels" class="panel-container"></div>
+    <button onclick="addPanel()">Add Panel</button>
+    <button onclick="resetPanels()">Reset Panels</button>
+    <div style="text-align: center; margin-top: 20px;">
+      <button onclick="generateRandomPanels(2)">Generate 2 Random Panels</button>
+      <button onclick="generateRandomPanels(4)">Generate 4 Random Panels</button>
+      <button onclick="generateRandomPanels(6)">Generate 6 Random Panels</button>
+    </div>
+  </div>
+
+  <div class="categories" style="margin-top: 60px;">
+    <h2><strong>Multibank</strong></h2>
     <select id="category-select" onchange="loadCategory()">
-      <option value="">Select a category</option>
+      <option value=""><strong>Select a category</strong></option>
+      <option value="individual" class="category-frame individual-frame">🟣 Individuel / Individual</option>
+      <option value="culture" class="category-frame culture-frame">🟡 Culture et tradition / Culture and tradition</option>
+      <option value="food" class="category-frame food-frame">🟢 Nourriture et nature / Food and nature</option>
+      <option value="society" class="category-frame society-frame">🔴 Société et loi / Society and law</option>
+      <option value="academic" class="category-frame academic-frame">🔵 Académique et économie / Academics and economy</option>
+      <option value="random" class="category-frame neutral-frame">⚪ Random categories</option>
+    </select>
+    <div id="question-list" class="question-list"></div>
+  </div>
+
+  <div id="review-submissions" style="margin: 40px auto; max-width: 600px;">
+    <h3>Review Submitted Questions</h3>
+    <ul id="submitted-questions-list" style="list-style-type: none; padding: 0;"></ul>
+  </div>
+
+  <form id="submit-question-form" onsubmit="submitQuestionForm(event)">
+    <h3>Submit a New Question</h3>
+    <label for="new-question">Question:</label>
+    <textarea id="new-question" rows="4" required></textarea>
+
+    <label for="new-category">Category:</label>
+    <select id="new-category" required>
+      <option value="">Select category</option>
       <option value="individual">Individuel / Individual</option>
       <option value="culture">Culture et tradition / Culture and tradition</option>
       <option value="food">Nourriture et nature / Food and nature</option>
       <option value="society">Société et loi / Society and law</option>
       <option value="academic">Académique et économie / Academics and economy</option>
-      <option value="random">🎲 Random categories</option>
     </select>
-    <div id="question-list" class="question-list"></div>
-  </div>
 
-  <div class="panels">
-    <h2>Your Questions</h2>
-    <div id="question-panels" class="panel-container"></div>
-    <button onclick="addPanel()">Add Panel</button>
-    <button onclick="resetPanels()">Reset Panels</button>
-  </div>
+    <button type="submit">Submit for Approval</button>
+    <button type="button" onclick="downloadSubmissions()">Download All Submissions</button>
+    <button type="button" onclick="importApprovedQuestions()">Import Approved Questions</button>
+  </form>
 
   <footer style="text-align:center; margin-top: 40px; font-size: 0.9em; color: #777;">
     <p>This tool is licensed under the <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">Creative Commons Attribution-NonCommercial 4.0 International License</a>.</p>
