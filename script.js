@@ -1,1 +1,0 @@
-// JavaScript logic will go here (already embedded inline in index.html)
