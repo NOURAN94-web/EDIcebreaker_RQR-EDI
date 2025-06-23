@@ -1,0 +1,47 @@
+
+body {
+  font-family: Arial, sans-serif;
+  background: #fdfdfd;
+  margin: 0;
+  padding: 0;
+}
+h2, h3 {
+  color: #333;
+}
+.panel-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+.category-frame {
+  padding: 6px;
+  margin: 5px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+.individual-frame { border: 2px solid purple; }
+.culture-frame { border: 2px solid goldenrod; }
+.food-frame { border: 2px solid green; }
+.society-frame { border: 2px solid red; }
+.academic-frame { border: 2px solid blue; }
+.neutral-frame { border: 2px solid gray; }
+button {
+  margin: 4px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: #1976d2;
+  color: white;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #1565c0;
+}
+textarea, select {
+  width: 100%;
+  padding: 6px;
+  margin: 6px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
