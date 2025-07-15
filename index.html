@@ -12,11 +12,19 @@
   </header>
 
   <section class="panels">
-    <h2>Your Questions</h2>
+    <h2>Vos questions / Your Questions</h2>
     <div id="question-panels" class="panel-container"></div>
     <div class="button-container">
       <button onclick="addPanel()">Add Panel</button>
       <button onclick="resetPanels()">Reset Panels</button>
+      <div class="surprise-container">
+        <button onclick="surpriseMe()">Surprends moi / Surprise me</button>
+        <select id="surprise-count">
+          <option value="2">2</option>
+          <option value="4">4</option>
+          <option value="6">6</option>
+        </select>
+      </div>
     </div>
   </section>
 
@@ -29,7 +37,7 @@
       <option value="food">🟢 Nourriture et nature / Food and nature</option>
       <option value="society">🔴 Société et loi / Society and law</option>
       <option value="academic">🔵 Académique et économie / Academics and economy</option>
-      <option value="random">⚪ Catégories variées</option>
+      <option value="random">⚪ Catégories variées / Random categories</option>
     </select>
     <div id="question-list" class="question-list"></div>
   </section>

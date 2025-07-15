@@ -139,13 +139,67 @@ function addPanel() {
   panel.className = 'panel';
   panel.ondragover = allowDrop;
   panel.ondrop = drop;
-  panel.innerHTML = '<div style="color: #999;">Drag question here</div>';
+  panel.innerHTML = '<div style="color: #999;">Glisser la question ici / Drag question here</div>';
   document.getElementById('question-panels').appendChild(panel);
 }
 
 function resetPanels() {
   document.getElementById('question-panels').innerHTML = '';
   panelCount = 0;
+}
+
+function surpriseMe() {
+  const count = parseInt(document.getElementById('surprise-count').value);
+  
+  // Get all questions from all categories
+  let allQuestions = [];
+  for (let cat in questionBank) {
+    questionBank[cat].forEach((question, index) => {
+      allQuestions.push({
+        text: question,
+        id: 'q-' + cat + '-' + index
+      });
+    });
+  }
+  
+  // Shuffle the questions
+  for (let i = allQuestions.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [allQuestions[i], allQuestions[j]] = [allQuestions[j], allQuestions[i]];
+  }
+  
+  // Add the specified number of panels with random questions
+  for (let i = 0; i < count; i++) {
+    const panel = document.createElement('div');
+    panel.className = 'panel filled-panel';
+    panel.ondragover = allowDrop;
+    panel.ondrop = drop;
+    
+    panelCount++;
+    const numberDiv = document.createElement('div');
+    numberDiv.className = 'panel-number';
+    numberDiv.textContent = panelCount;
+    
+    const hidden = document.createElement('div');
+    hidden.className = 'hidden-question';
+    hidden.style.display = 'none';
+    hidden.innerHTML = allQuestions[i].text;
+    
+    panel.appendChild(numberDiv);
+    panel.appendChild(hidden);
+    
+    panel.onclick = () => {
+      if (hidden.style.display === 'none') {
+        hidden.style.display = 'block';
+        numberDiv.style.display = 'none';
+      } else {
+        hidden.style.display = 'none';
+        numberDiv.style.display = 'block';
+      }
+    };
+    
+    document.getElementById('question-panels').appendChild(panel);
+  }
 }
 
 function toggleSubmitForm() {
