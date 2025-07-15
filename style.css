@@ -1,113 +1,177 @@
-
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #fdfdfd;
-  margin: 20px;
-  padding: 0;
+  font-family: Arial, sans-serif;
+  background: #fdfdfd;
+  margin: 0;
+  padding: 20px;
+}
+
+h2, h3 {
   color: #333;
 }
 
-h1 {
+header {
   text-align: center;
   margin-bottom: 30px;
 }
 
-.categories,
+header img {
+  max-width: 300px;
+  height: auto;
+}
+
 .panels {
-  max-width: 900px;
-  margin: 0 auto 40px auto;
+  margin-bottom: 40px;
 }
 
-select {
-  font-size: 1em;
-  padding: 6px;
-  margin-bottom: 15px;
-}
-
-.question-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
-}
-
-.question-item {
-  border: 2px dashed #aaa;
-  padding: 20px;
-  width: 300px;
-  background: white;
-  cursor: grab;
-  border-radius: 10px;
+.panels h2 {
   text-align: center;
-  font-size: 0.95em;
 }
 
 .panel-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 10px;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 .panel {
-  width: 250px;
-  height: 150px;
-  background-color: white;
-  border-radius: 10px;
-  border: 3px solid #bbb;
+  border: 2px solid #ccc;
+  min-height: 120px;
+  width: 150px;
+  padding: 15px;
+  background-color: #f0f0f0;
   text-align: center;
-  line-height: 1.5;
-  padding: 20px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 0.95em;
-  transition: all 0.2s ease-in-out;
+  position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.panel.clickable:hover {
-  background-color: #f2f2f2;
+.panel:hover {
+  background-color: #e6f7ff;
 }
 
-/* Color themes per category */
-.categories[data-theme='individual'] .question-item,
-.panel[data-theme='individual'] {
-  border-color: #b06cb3;
+.panel.filled-panel {
+  background-color: #e6f7ff;
+  border-color: #1976d2;
 }
 
-.categories[data-theme='culture'] .question-item,
-.panel[data-theme='culture'] {
-  border-color: #f5b100;
+.panel-number {
+  font-size: 2em;
+  font-weight: bold;
+  color: #1976d2;
 }
 
-.categories[data-theme='food'] .question-item,
-.panel[data-theme='food'] {
-  border-color: #74c365;
+.hidden-question {
+  font-style: italic;
+  padding: 10px;
+  text-align: left;
+  font-size: 0.9em;
+  line-height: 1.4;
 }
 
-.categories[data-theme='society'] .question-item,
-.panel[data-theme='society'] {
-  border-color: #e74c3c;
+.question-list {
+  margin-top: 20px;
 }
 
-.categories[data-theme='academic'] .question-item,
-.panel[data-theme='academic'] {
-  border-color: #00bcd4;
+.question {
+  border: 1px solid #ddd;
+  padding: 12px;
+  margin: 8px 0;
+  cursor: grab;
+  font-style: italic;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.question:hover {
+  background-color: #f0f0f0;
+}
+
+.question:active {
+  cursor: grabbing;
 }
 
 button {
-  display: block;
-  margin: 30px auto 0 auto;
-  padding: 10px 20px;
-  font-size: 1em;
-  background-color: #333;
-  color: white;
+  margin: 4px;
+  padding: 8px 16px;
   border: none;
-  border-radius: 6px;
+  border-radius: 4px;
+  background-color: #1976d2;
+  color: white;
   cursor: pointer;
+  font-size: 14px;
 }
 
 button:hover {
-  background-color: #555;
+  background-color: #1565c0;
+}
+
+select {
+  padding: 8px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: Arial, sans-serif;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+#submit-question-form {
+  display: none;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-top: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.button-container {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.categories {
+  margin-top: 40px;
+}
+
+.submit-section {
+  text-align: center;
+  margin: 40px 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .panel {
+    width: 120px;
+    min-height: 100px;
+  }
+  
+  .panel-number {
+    font-size: 1.5em;
+  }
+  
+  .hidden-question {
+    font-size: 0.8em;
+  }
+  
+  body {
+    padding: 10px;
+  }
 }
