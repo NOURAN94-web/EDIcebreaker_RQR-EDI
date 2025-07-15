@@ -28,7 +28,6 @@ let questionBank = {
     "How is time understood and measured?",
     "Which countries are the most frequently visited by people in your region for vacations?"
   ]
-  // Other categories should be added as needed
 };
 
 let panelCount = 0;
@@ -79,9 +78,11 @@ function drop(e) {
   const numberDiv = document.createElement('div');
   numberDiv.className = 'panel-number';
   numberDiv.textContent = panelCount;
+  numberDiv.style.fontWeight = 'bold';
 
   const hidden = document.createElement('div');
   hidden.className = 'hidden-question';
+  hidden.style.display = 'none';
   hidden.innerHTML = '<em>' + dragged.textContent + '</em>';
 
   panel.innerHTML = '';
@@ -90,9 +91,9 @@ function drop(e) {
   panel.classList.add('filled-panel', 'highlighted');
 
   panel.onclick = () => {
-    panel.innerHTML = '<em>' + dragged.textContent + '</em>';
+    hidden.style.display = 'block';
+    numberDiv.style.display = 'none';
     panel.classList.remove('highlighted');
-    panel.onclick = null;
   };
 }
 
