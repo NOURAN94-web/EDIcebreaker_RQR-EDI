@@ -205,25 +205,67 @@ function surpriseMe() {
 function toggleSubmitForm() {
   const form = document.getElementById('submit-question-form');
   form.style.display = (form.style.display === 'none' || form.style.display === '') ? 'block' : 'none';
+  
+  // Clear previous messages when opening the form
+  if (form.style.display === 'block') {
+    document.getElementById('success-message').style.display = 'none';
+    document.getElementById('error-message').style.display = 'none';
+  }
+}
+
+function showMessage(type, message) {
+  const successDiv = document.getElementById('success-message');
+  const errorDiv = document.getElementById('error-message');
+  
+  if (type === 'success') {
+    successDiv.textContent = message;
+    successDiv.style.display = 'block';
+    errorDiv.style.display = 'none';
+  } else {
+    errorDiv.textContent = message;
+    errorDiv.style.display = 'block';
+    successDiv.style.display = 'none';
+  }
 }
 
 function sendQuestion() {
-  const question = document.getElementById('new-question').value;
+  const question = document.getElementById('new-question').value.trim();
   const category = document.getElementById('new-category').value;
+  const sendButton = document.getElementById('send-button');
   
   if (!question || !category) {
-    alert("Please enter your question and select a category.");
+    showMessage('error', "Please enter your question and select a category.");
     return;
   }
   
-  // Here you would typically send the question to your backend
-  // For now, we'll just show a success message
-  alert("Thank you for submitting your question! It has been sent to the admins for review.");
+  // Disable button and show loading state
+  sendButton.disabled = true;
+  sendButton.textContent = 'Sending...';
   
-  // Clear the form
-  document.getElementById('new-question').value = "";
-  document.getElementById('new-category').value = "";
-  toggleSubmitForm();
+  // Create the email subject and body
+  const subject = `EDIcebreaker Tool - New Question Submission`;
+  const body = `New question submitted via EDIcebreaker Tool:
+
+Question: ${question}
+
+Category: ${category}
+
+Submitted at: ${new Date().toLocaleString()}`;
+  
+  // Create mailto link
+  const mailtoLink = `mailto:nour.94.an@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  
+  // Open email client
+  window.location.href = mailtoLink;
+  
+  // Show success message and reset form
+  setTimeout(() => {
+    showMessage('success', "Email client opened! Please send the email to submit your question.");
+    document.getElementById('new-question').value = "";
+    document.getElementById('new-category').value = "";
+    sendButton.disabled = false;
+    sendButton.textContent = 'Send to Admins';
+  }, 1000);
 }
 
 // Initialize with some panels

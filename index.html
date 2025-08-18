@@ -46,8 +46,10 @@
     <button onclick="toggleSubmitForm()">Submit a Question</button>
     <div id="submit-question-form">
       <h3>Submit a New Question</h3>
+      <div id="success-message" class="success-message"></div>
+      <div id="error-message" class="error-message"></div>
       <label for="new-question">Your Question:</label><br>
-      <textarea id="new-question" rows="4" required></textarea><br><br>
+      <textarea id="new-question" rows="4" required placeholder="Enter your question here..."></textarea><br><br>
       <label for="new-category">Category:</label>
       <select id="new-category" required>
         <option value="">Select category</option>
@@ -57,7 +59,7 @@
         <option value="society">Société et loi / Society and law</option>
         <option value="academic">Académique et économie / Academics and economy</option>
       </select><br><br>
-      <button onclick="sendQuestion()">Send to Admins</button>
+      <button id="send-button" onclick="sendQuestion()">Send to Admins</button>
     </div>
   </section>
 
